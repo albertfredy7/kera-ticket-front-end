@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { MyCinemaContext } from '../ContextShare/ContextShare'
+import Seats from '../Components/Seats';
 
 function TicketBooking() {
   const {selectedCinemaShow} = useContext(MyCinemaContext)
@@ -31,6 +32,8 @@ function TicketBooking() {
           <p>|</p>
           <p>{formattedDate}</p>
         </div>
+        {/* // for seats */}
+        <Seats/>
       </div>
     </div>
   )

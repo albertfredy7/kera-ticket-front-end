@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from '../ContextShare/AuthContext'
+
 
 function Home() {
+  const { currentUser } = useContext(AuthContext)
+  console.log(currentUser);
   return (
-    <div>Home</div>
+    <div>
+      <h2>Welcome {currentUser?.displayName}</h2>
+    </div>
   )
 }
 

@@ -5,11 +5,16 @@ import Navbar from 'react-bootstrap/Navbar';
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { MyLocationContext } from '../ContextShare/ContextShare';
+import { AuthContext } from '../ContextShare/AuthContext';
+import { signOut } from 'firebase/auth';
+import { auth } from '../config';
+import { Link } from 'react-router-dom';
 
 
 function Header() {
     const [show, setShow] = useState(false);
     const {selectedCity,setSelectedCity} = useContext(MyLocationContext)
+    const { currentUser } = useContext(AuthContext)
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -18,10 +23,10 @@ function Header() {
         localStorage.setItem('selectedCity',city);
         handleClose(); // Close the modal after selecting a card
     };
-    console.log(selectedCity);
+    // console.log(selectedCity);
 
     const city=localStorage.getItem('selectedCity') && setSelectedCity(localStorage.getItem('selectedCity'))
-    console.log(city);
+    // console.log(city);
 
     
 
@@ -36,11 +41,12 @@ function Header() {
                     <Nav className="me-auto">
                         <Nav.Link href="/movies">Movies</Nav.Link>
                         <Nav.Link href="/theatres">Theatres</Nav.Link>
+                        <Nav.Link href="/orders">Orders</Nav.Link>
                     </Nav>
-                    <Nav>
+                    <Nav className='d-flex justify-content-center align-items-center'>
                         <Nav.Link  onClick={handleShow}><i class="fa-solid fa-map-pin"></i> {selectedCity }</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
-                            Dank memes
+                        <Nav.Link eventKey={2}>
+                            {currentUser?.email ? <button onClick={()=>signOut(auth)} className='btn btn-dark'>Logout</button> : <Link to={'/login'}><button className='btn btn-dark'>Login</button></Link>}
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

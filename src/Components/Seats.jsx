@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { MySeatContext } from '../ContextShare/ContextShare';
 
 const Seats = () => {
   const [selectedSeats, setSelectedSeats] = useState([]);
+  const {selectedSeat,setSelectedSeat} = useContext(MySeatContext)
 
   const selectSeat = (seat) => {
     setSelectedSeats((prevSelectedSeats) => {
       if (prevSelectedSeats.includes(seat)) {
-        return prevSelectedSeats.filter((selectedSeat) => selectedSeat !== seat);
+        const updatedSeats = prevSelectedSeats.filter((selectedSeat) => selectedSeat !== seat);
+        setSelectedSeat(updatedSeats); // Update the context value
+        return updatedSeats;
       } else {
-        return [...prevSelectedSeats, seat];
+        const updatedSeats = [...prevSelectedSeats, seat];
+        setSelectedSeat(updatedSeats); // Update the context value
+        return updatedSeats;
       }
     });
   };
@@ -44,6 +50,7 @@ const Seats = () => {
       // Add a line break after every 24 seats (length of seatNumbers array)
       seats.push(<br key={`br-${category}`} />);
     }
+    console.log(selectedSeat);
 
     return seats;
   };

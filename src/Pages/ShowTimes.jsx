@@ -14,6 +14,8 @@ function ShowTimes() {
   const {selectedCinemaShow,setSelectedCinemaShow} = useContext(MyCinemaContext)
   const {id} = useParams()
 
+
+
   console.log(id);
   
 

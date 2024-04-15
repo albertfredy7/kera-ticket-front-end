@@ -9,6 +9,8 @@ import { AuthContext } from '../ContextShare/AuthContext';
 import { signOut } from 'firebase/auth';
 import { auth } from '../config';
 import { Link } from 'react-router-dom';
+import logo from '../Assets/logo.png'
+import logo1 from '../Assets/kera ticket.svg'
 
 
 function Header() {
@@ -35,16 +37,17 @@ function Header() {
     return (
         <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
             <Container>
-                <Navbar.Brand href="/">Kera-Tickets</Navbar.Brand>
+                <Navbar.Brand href="/">
+                    <img src={logo1} width={'100'} alt="" /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav">
+                <Navbar.Collapse id="responsive-navbar-nav ">
                     <Nav className="me-auto">
-                        <Nav.Link href="/movies">Movies</Nav.Link>
-                        <Nav.Link href="/theatres">Theatres</Nav.Link>
-                        <Nav.Link href="/orders">Orders</Nav.Link>
+                        <Nav.Link href="/movies" style={{fontSize:'20px',color:'black'}}>Movies</Nav.Link>
+                        <Nav.Link href="/theatres"   style={{fontSize:'20px',color:'black'}}>Theatres</Nav.Link>
+                        <Nav.Link href="/orders"  style={{fontSize:'20px',color:'black'}}>Orders</Nav.Link>
                     </Nav>
                     <Nav className='d-flex justify-content-center align-items-center'>
-                        <Nav.Link  onClick={handleShow}><i class="fa-solid fa-map-pin"></i> {selectedCity }</Nav.Link>
+                        <Nav.Link  onClick={handleShow} style={{fontSize:'20px',color:'black'}}><i class="fa-solid fa-map-pin"></i> {selectedCity }</Nav.Link>
                         <Nav.Link eventKey={2}>
                             {currentUser?.email ? <button onClick={()=>signOut(auth)} className='btn btn-dark'>Logout</button> : <Link to={'/login'}><button className='btn btn-dark'>Login</button></Link>}
                         </Nav.Link>

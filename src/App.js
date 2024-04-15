@@ -16,7 +16,7 @@ import Orders from './Pages/Orders';
 function App() {
   return (
     <div className="App">
-      <Header/>
+      
       <Routes>
         <Route path='/register' element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>
@@ -28,7 +28,7 @@ function App() {
         <Route path='/movies/:id/showtimes/tickets' element={<TicketBooking/>}/>
         <Route path='/orders' element={<Orders/>}/>
       </Routes>
-      <Footer/>
+     
     </div>
   );
 }

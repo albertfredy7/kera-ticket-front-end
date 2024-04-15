@@ -8,6 +8,9 @@ import { AuthContext } from '../ContextShare/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+import Header from '../Components/Header';
+import Footer from '../Components/Footer';
+import AuthWrapper from '../Components/AuthWrapper';
 
 function TicketBooking() {
   const { selectedCinemaShow } = useContext(MyCinemaContext);
@@ -74,7 +77,7 @@ function TicketBooking() {
         progress: undefined,
         theme: "dark",
         });
-      navigate('/');
+      navigate('/orders');
     } catch (error) {
       console.log("Error adding booking or order: ", error);
       setIsLoading(false); // Stop loading in case of error
@@ -82,27 +85,31 @@ function TicketBooking() {
   };
 
   return (
-    <div>
-      
-      {isLoading ? <div className='loader-container m-5'><ReactLoading type="bars" color="red" height={'10%'} width={'10%'} className='d-flex justify-content-center align-items-center container' /></div> :
-      <div className='d-flex column flex-column justify-content-center'>
-      <h2 className='text-title text-center'>{selectedMovie.film_name}</h2>
-      <ToastContainer />
-      <div className='d-flex justify-content-center gap-3'>
-        <p>{theaterName}</p>
-        <p>|</p>
-        <p>{showtime}</p>
-        <p>|</p>
-        <p>{formattedDate}</p>
+    <AuthWrapper>
+      <div style={{height:'100vh'}}>
+        <Header />
+        
+        {isLoading ? <div className='loader-container m-5'><ReactLoading type="bars" color="red" height={'10%'} width={'10%'} className='d-flex justify-content-center align-items-center container' /></div> :
+        <div className='d-flex column flex-column justify-content-center'>
+        <h2 className='text-title text-center'>{selectedMovie.film_name}</h2>
+        <ToastContainer />
+        <div className='d-flex justify-content-center gap-3'>
+          <p>{theaterName}</p>
+          <p>|</p>
+          <p>{showtime}</p>
+          <p>|</p>
+          <p>{formattedDate}</p>
+        </div>
+        <Seats />
+        <div className='m-5 w- d-flex justify-content-center align-items-center'>
+          {selectedSeat && <button className='btn btn-dark w-50' onClick={handleConfirm}>
+            <i className="fa fa-ticket me-2"></i> Confirm Tickets
+          </button>}
+        </div>
+      </div> }
+      <Footer />
       </div>
-      <Seats />
-      <div className='m-5 w- d-flex justify-content-center align-items-center'>
-        {selectedSeat && <button className='btn btn-dark w-50' onClick={handleConfirm}>
-          <i className="fa fa-ticket me-2"></i> Confirm Tickets
-        </button>}
-      </div>
-    </div> }
-    </div>
+    </AuthWrapper>
   );
 }
 

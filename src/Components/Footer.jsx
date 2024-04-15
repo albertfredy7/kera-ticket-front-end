@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../Assets/kera ticket.svg';
 
 function Footer() {
-  return (
-    <div className="footer p-4 " style={{ background: '#f0f0f0', position: 'relative', bottom: '0', width: '100%' }}>
+ return (
+    <div className="footer p-4 " style={{ background: '#ffffff', position: 'relative', bottom: '0', width: '100%' }}>
       <div className="row">
         <div className="row ">
           <div className="col-md-12 text-center d-flex justify-content-between">
-            <p>Get connected with us on social network</p>
+            <p>Connect with us on social media</p>
             <div className="icons d-flex gap-3">
               <i className="bi bi-github"></i>
               <i className="bi bi-linkedin"></i>
@@ -20,34 +21,34 @@ function Footer() {
         </div>
         <div className="col-md-3">
           <div className="logo">
-            <h3>KeraTickets</h3>
+            <img src={logo} alt="" width={150} />
           </div>
-          <div className="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+          <div className="text">Your one-stop solution for movie ticket bookings.</div>
         </div>
         <div className="col-md-3 mt-4">
-          <h4>Products</h4>
+          <h4>Services</h4>
           <ul style={{ listStyleType: 'none', paddingLeft: '0' }}>
-            <li><Link to="#" style={{ textDecoration: 'none', color: 'black' }}>Angular</Link></li>
-            <li><Link to="#" style={{ textDecoration: 'none', color: 'black' }}>React</Link></li>
-            <li><Link to="#" style={{ textDecoration: 'none', color: 'black' }}>Vue</Link></li>
-            <li><Link to="#" style={{ textDecoration: 'none', color: 'black' }}>Laravel</Link></li>
+            <li><Link to="/movies" style={{ textDecoration: 'none', color: 'black' }}>Browse Movies</Link></li>
+            <li><Link to="/showtimes" style={{ textDecoration: 'none', color: 'black' }}>Check Showtimes</Link></li>
+            <li><Link to="/booking" style={{ textDecoration: 'none', color: 'black' }}>Book Tickets</Link></li>
+            <li><Link to="/orders" style={{ textDecoration: 'none', color: 'black' }}>Order History</Link></li>
           </ul>
         </div>
         <div className="col-md-3 mt-4">
           <h4>Useful Links</h4>
           <ul style={{ listStyleType: 'none', paddingLeft: '0' }}>
-            <li><Link to="#" style={{ textDecoration: 'none', color: 'black' }}>Pricing</Link></li>
-            <li><Link to="#" style={{ textDecoration: 'none', color: 'black' }}>Settings</Link></li>
-            <li><Link to="#" style={{ textDecoration: 'none', color: 'black' }}>Order</Link></li>
-            <li><Link to="#" style={{ textDecoration: 'none', color: 'black' }}>Help</Link></li>
+            <li><Link to="/faq" style={{ textDecoration: 'none', color: 'black' }}>FAQ</Link></li>
+            <li><Link to="/privacy" style={{ textDecoration: 'none', color: 'black' }}>Privacy Policy</Link></li>
+            <li><Link to="/terms" style={{ textDecoration: 'none', color: 'black' }}>Terms of Service</Link></li>
+            <li><Link to="/contact" style={{ textDecoration: 'none', color: 'black' }}>Contact Us</Link></li>
           </ul>
         </div>
         <div className="col-md-3 mt-4">
           <h4>Contact</h4>
           <ul style={{ listStyleType: 'none', paddingLeft: '0' }}>
-            <li><Link to="#" style={{ textDecoration: 'none', color: 'black' }}> <i className="bi bi-geo-alt"></i>  123 Street, City</Link></li>
+            <li><Link to="#" style={{ textDecoration: 'none', color: 'black' }}> <i className="bi bi-geo-alt"></i>  123 Movie Street, City</Link></li>
             <li><Link to="#" style={{ textDecoration: 'none', color: 'black' }}> <i className="bi bi-telephone"></i>  123-456-7890</Link></li>
-            <li><Link to="#" style={{ textDecoration: 'none', color: 'black' }}> <i className="bi bi-envelope"></i> info@example.com</Link></li>
+            <li><Link to="#" style={{ textDecoration: 'none', color: 'black' }}> <i className="bi bi-envelope"></i> info@kera-tickets.com</Link></li>
             <li><Link to="#" style={{ textDecoration: 'none', color: 'black' }}> <i className="bi bi-printer"></i>  123-456-7890</Link></li>
           </ul>
         </div>
@@ -55,13 +56,11 @@ function Footer() {
       <hr />
       <div className="row">
         <div className="col-md-12 text-center">
-          &copy; copyright 2023 project fair
+          <p className='fw-semibold'>&copy; 2024 Kera Tickets. All rights reserved.</p>
         </div>
       </div>
     </div>
-  );
+ );
 }
 
 export default Footer;
-
-

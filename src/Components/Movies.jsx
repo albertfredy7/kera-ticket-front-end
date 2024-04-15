@@ -13,7 +13,7 @@ function Movies() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://keraserver-1.onrender.com/filimDetails');
+                const response = await axios.get('https://bored-hospital-gown-hare.cyclic.app/filimDetails');
                 setMovies(response.data);
                 setLoading(false); // Set loading to false after data is fetched
             } catch (error) {

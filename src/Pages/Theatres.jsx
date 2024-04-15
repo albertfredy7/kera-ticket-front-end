@@ -13,7 +13,7 @@ function Theatres() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://keraserver-1.onrender.com/theaters');
+                const response = await fetch('https://bored-hospital-gown-hare.cyclic.app/theaters');
                 const data = await response.json();
                 console.log(data);
                 setTheatres(data);

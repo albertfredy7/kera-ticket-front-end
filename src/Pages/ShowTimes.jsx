@@ -27,7 +27,7 @@ function ShowTimes() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://keraserver-1.onrender.com/showTimes');
+        const response = await axios.get('https://bored-hospital-gown-hare.cyclic.app/showTimes');
         setSelectedTheater(response.data);
       } catch (error) {
         console.error(error); // Handle any errors here

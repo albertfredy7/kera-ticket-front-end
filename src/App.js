@@ -1,17 +1,15 @@
 
-import './App.css';
-import Header from './Components/Header';
 import { Route, Routes } from 'react-router-dom';
-import Home from './Pages/Home';
-import NearMovies from './Pages/NearMovies';
-import Footer from './Components/Footer';
-import Theatres from './Pages/Theatres';
-import MovieDetails from './Pages/MovieDetails';
-import ShowTimes from './Pages/ShowTimes';
-import TicketBooking from './Pages/TicketBooking';
-import Register from './Components/Register';
+import './App.css';
 import Login from './Components/Login';
+import Register from './Components/Register';
+import Home from './Pages/Home';
+import MovieDetails from './Pages/MovieDetails';
+import NearMovies from './Pages/NearMovies';
 import Orders from './Pages/Orders';
+import ShowTimes from './Pages/ShowTimes';
+import Theatres from './Pages/Theatres';
+import TicketBooking from './Pages/TicketBooking';
 
 function App() {
   return (

@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import cinemas from '../Assets/cinemas logo.png';
-import { MyLocationContext, MyTheaterContext } from '../ContextShare/ContextShare';
-import Header from '../Components/Header';
-import Footer from '../Components/Footer';
 import AuthWrapper from '../Components/AuthWrapper';
+import Footer from '../Components/Footer';
+import Header from '../Components/Header';
+import { MyLocationContext, MyTheaterContext } from '../ContextShare/ContextShare';
+import API from '../lib/api';
 
 function Theatres() {
     const [theatres, setTheatres] = useState([]);
@@ -13,18 +14,18 @@ function Theatres() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://bored-hospital-gown-hare.cyclic.app/theaters');
-                const data = await response.json();
-                console.log(data);
-                setTheatres(data);
-                setSelectedTheater(data);
+                const response = await API.get('theaters');
+                
+             
+                setTheatres(response.data);
+                setSelectedTheater(response.data);
             } catch (error) {
                 console.error(error); // Handle any errors here
             }
         };
 
         fetchData();
-    }, [selectedCity]);
+    }, [selectedCity,selectedTheater,setSelectedTheater]);
     console.log(selectedTheater);
 
     console.log(theatres);

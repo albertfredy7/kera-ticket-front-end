@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import axios from 'axios';
+
 import { MyLocationContext, MyMovieDetailsContext } from '../ContextShare/ContextShare';
 import { Link } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton'; // Import the Skeleton component
+import API from '../lib/api';
+
 
 function Movies() {
     const [movies, setMovies] = useState([]);
@@ -13,7 +15,7 @@ function Movies() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://bored-hospital-gown-hare.cyclic.app/filimDetails');
+                const response = await API.get('filimDetails');
                 setMovies(response.data);
                 setLoading(false); // Set loading to false after data is fetched
             } catch (error) {
@@ -28,6 +30,8 @@ function Movies() {
         console.log(movie);
         setSelectedMovie(movie);
     };
+
+  
 
     return (
         <>

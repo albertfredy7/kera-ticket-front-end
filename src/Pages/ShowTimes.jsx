@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { MyCinemaContext, MyLocationContext, MyMovieDetailsContext, MyTheaterContext } from '../ContextShare/ContextShare';
-import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import Header from '../Components/Header';
-import Footer from '../Components/Footer';
 import AuthWrapper from '../Components/AuthWrapper';
+import Footer from '../Components/Footer';
+import Header from '../Components/Header';
+import { MyCinemaContext, MyLocationContext, MyMovieDetailsContext, MyTheaterContext } from '../ContextShare/ContextShare';
+import API from '../lib/api';
+
 
 function ShowTimes() {
   const { selectedCity } = useContext(MyLocationContext);
@@ -27,7 +28,7 @@ function ShowTimes() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://bored-hospital-gown-hare.cyclic.app/showTimes');
+        const response = await API.get('showTimes');
         setSelectedTheater(response.data);
       } catch (error) {
         console.error(error); // Handle any errors here
@@ -35,7 +36,7 @@ function ShowTimes() {
     };
 
     fetchData();
-  }, []);
+  }, [setSelectedTheater]);
 
   useEffect(() => {
     const selectedMovieId = selectedMovie.film_id;
@@ -45,7 +46,7 @@ function ShowTimes() {
     });
 
     setSelectedTheaterData(theatersShowingMovie);
-  }, [selectedCity, selectedMovie, selectedTheater]);
+  }, [selectedCity, selectedMovie, selectedTheater,setSelectedTheater]);
 
   const handleDateClick = (date) => {
     setSelectedDate(date);
@@ -68,7 +69,7 @@ function ShowTimes() {
     setSelectedShowtimeData(showtimeData);
     setSelectedCinemaShow(showtimeData)
     navigate(`/movies/${id}/showtimes/tickets`)
-
+    console.log(selectedShowtimeData);
     // You can do something with the selected information, e.g., store it in state or make an API call
   };
   console.log(selectedCinemaShow);
@@ -81,8 +82,8 @@ function ShowTimes() {
     for (let i = 0; i < 6; i++) {
       const date = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate() + i));
 
-      const options = { weekday: 'short', day: 'numeric', month: 'short' };
-      const formattedDate = date.toLocaleDateString('en-US', options);
+      // const options = { weekday: 'short', day: 'numeric', month: 'short' };
+      // const formattedDate = date.toLocaleDateString('en-US', options);
 
       const isToday = i === 0; // Check if it's today's date
 

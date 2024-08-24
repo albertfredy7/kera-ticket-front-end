@@ -7,7 +7,7 @@ export const MyCinemaContext = createContext()
 export const MySeatContext = createContext()
 
 function ContextShare({children}) {
-    const [selectedCity,setSelectedCity] = useState('Ernakulam') 
+    const [selectedCity,setSelectedCity] = useState('Thiruvananthapuram') 
     const [selectedMovie,setSelectedMovie] = useState('')
     const [selectedTheater,setSelectedTheater] = useState([])
     const [selectedCinemaShow,setSelectedCinemaShow] = useState(null)
